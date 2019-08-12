@@ -20,5 +20,6 @@ public class PointService {
 		pointRepo.inserirDez();
 		pointRepo.calcularMedia();
 		pointRepo.contar();
+		System.out.println(pointRepo.buscarTodos());
 	}
 }

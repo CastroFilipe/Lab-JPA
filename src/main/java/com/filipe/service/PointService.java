@@ -7,9 +7,16 @@ import com.filipe.repository.PointRepository;
 
 @Service
 public class PointService {
-	
+
 	@Autowired
-	PointRepository pointRepository;
-	
-	
+	private PointRepository pointRepo;
+
+	public void obter() {
+
+	}
+
+	//@Transactional
+	public void inserirDez() {
+		pointRepo.inserirDez();
+	}
 }

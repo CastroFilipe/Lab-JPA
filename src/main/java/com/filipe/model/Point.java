@@ -1,13 +1,16 @@
 package com.filipe.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Point {
     // Persistent Fields:
 	@Id
-	private Long id;
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	
     private int x;
     private int y;
@@ -15,18 +18,18 @@ public class Point {
     public Point() { 	
     }
 
-	public Point(Long id, int x, int y) {
+	public Point(Integer id, int x, int y) {
 		super();
 		this.id = id;
 		this.x = x;
 		this.y = y;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

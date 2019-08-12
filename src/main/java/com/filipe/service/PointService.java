@@ -18,5 +18,7 @@ public class PointService {
 	//@Transactional
 	public void inserirDez() {
 		pointRepo.inserirDez();
+		pointRepo.calcularMedia();
+		pointRepo.contar();
 	}
 }

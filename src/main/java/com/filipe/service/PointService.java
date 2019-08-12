@@ -21,5 +21,7 @@ public class PointService {
 		pointRepo.calcularMedia();
 		pointRepo.contar();
 		System.out.println(pointRepo.buscarTodos());
+		System.out.println(pointRepo.buscarPorId(5));
+		
 	}
 }

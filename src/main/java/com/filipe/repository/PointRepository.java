@@ -9,6 +9,7 @@ import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.filipe.model.Point;
@@ -58,5 +59,11 @@ public class PointRepository {
 		List<Point> results = query.getResultList();
 		
 		return results;
+	}
+	
+	public Point buscarPorId(@Param("id") Integer id) {
+		TypedQuery<Point> query = em.createQuery("SELECT p FROM Point p WHERE p.id = :id", Point.class);
+		
+		return query.getSingleResult();
 	}
 }

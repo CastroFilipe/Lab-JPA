@@ -1,8 +1,12 @@
 package com.filipe.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.filipe.model.Point;
+import com.filipe.model.Tabuleiro;
 import com.filipe.repository.PointRepository;
 
 @Service
@@ -15,13 +19,21 @@ public class PointService {
 
 	}
 
-	//@Transactional
+	@Transactional
 	public void inserirDez() {
-		pointRepo.inserirDez();
-		pointRepo.calcularMedia();
+		pointRepo.inserirPontos();
 		pointRepo.contar();
+		pointRepo.calcularMedia();
 		System.out.println(pointRepo.buscarTodos());
-		System.out.println(pointRepo.buscarPorId(5));
 		
+		Point p = pointRepo.buscarPorId(5);
+		
+		System.out.println(p);
+		
+		
+		
+		Tabuleiro tab = p.getTabuleiro();
+		
+		System.out.print(tab);
 	}
 }

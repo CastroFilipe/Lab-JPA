@@ -12,6 +12,8 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import com.filipe.model.Point;
+import com.filipe.model.Tabuleiro;
+import com.filipe.model.TipoTabuleiro;
 
 @Repository
 public class PointRepository {
@@ -22,16 +24,26 @@ public class PointRepository {
 	@PersistenceContext
 	EntityManager em;
 
-	public void inserirDez() {
+	public void inserirPontos() {
 
 		EntityManager entManager = emf.createEntityManager();
 
 		try {
 			entManager.getTransaction().begin();
+			
+			Tabuleiro tabuleiro = new Tabuleiro(null, "Tabuleiro de xadrez", TipoTabuleiro.XADREZ);
+			Tabuleiro tabuleiro2 = new Tabuleiro(null, "Tabuleiro de ludo", TipoTabuleiro.LUDO);
+			entManager.persist(tabuleiro);
+			entManager.persist(tabuleiro2);
+			
 
-			for (int i = 0; i < 5; i++) {
-				entManager.persist(new Point(null, i, i, "BLACK", 1.2));
-				entManager.persist(new Point(null, -i, -i, "GREEN", 1.9));
+			for (int i = 0; i < 2; i++) {
+				entManager.persist(new Point(null, i, i, "BLACK", 1.2, tabuleiro));
+				entManager.persist(new Point(null, -i, -i, "WHITE", 1.9, tabuleiro));
+				
+				entManager.persist(new Point(null, -i, -i, "WHITE", 1.9, tabuleiro2));
+				entManager.persist(new Point(null, i, i, "BLUE", 2.0, tabuleiro2));
+				entManager.persist(new Point(null, i+i, i+i, "GREEN", 4.0, tabuleiro2));
 			}
 
 			entManager.getTransaction().commit();
@@ -65,6 +77,24 @@ public class PointRepository {
 		TypedQuery<Point> query = em.createQuery("SELECT p FROM Point p WHERE p.id = :point_id", Point.class)
 				.setParameter("point_id", id);
 		
-		return query.getSingleResult();
+		EntityManager entManager = emf.createEntityManager();
+		
+		Point p;
+		
+		try {
+			entManager.getTransaction().begin();
+			
+			p = query.getSingleResult();
+			
+			//Hibernate.initialize(p.getTabuleiro());
+			
+			//System.out.println(p.getTabuleiro());
+			
+			entManager.getTransaction().commit();
+		} finally {
+			entManager.close();
+		}
+		
+		return p;
 	}
 }

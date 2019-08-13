@@ -9,20 +9,27 @@ import javax.persistence.Id;
 public class Point {
     // Persistent Fields:
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-    private int x;
-    private int y;
+    private Integer cordenada_x;
+    
+    private Integer cordenada_y;
+    
+    private String cor;
+    
+    private Double diametro;
     
     public Point() { 	
     }
-
-	public Point(Integer id, int x, int y) {
+	
+	public Point(Integer id, Integer cordenada_x, Integer cordenada_y, String cor, Double diametro) {
 		super();
 		this.id = id;
-		this.x = x;
-		this.y = y;
+		this.cordenada_x = cordenada_x;
+		this.cordenada_y = cordenada_y;
+		this.cor = cor;
+		this.diametro = diametro;
 	}
 
 	public Integer getId() {
@@ -32,26 +39,42 @@ public class Point {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public int getX() {
-		return x;
+	
+	public Integer getCordenada_x() {
+		return cordenada_x;
 	}
 
-	public void setX(int x) {
-		this.x = x;
+	public void setCordenada_x(Integer cordenada_x) {
+		this.cordenada_x = cordenada_x;
 	}
 
-	public int getY() {
-		return y;
+	public Integer getCordenada_y() {
+		return cordenada_y;
 	}
 
-	public void setY(int y) {
-		this.y = y;
+	public void setCordenada_y(Integer cordenada_y) {
+		this.cordenada_y = cordenada_y;
+	}
+
+	public String getCor() {
+		return cor;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+
+	public Double getDiametro() {
+		return diametro;
+	}
+
+	public void setDiametro(Double diametro) {
+		this.diametro = diametro;
 	}
 
 	// String Representation:
     @Override
     public String toString() {
-        return String.format("(%d, %d)", this.x, this.y);
+        return String.format("%s (%d, %d)",this.cor, this.cordenada_x, this.cordenada_y);
     }
 }

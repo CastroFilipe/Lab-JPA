@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.filipe.service.PointService;
+import com.filipe.service.TabuleiroService;
 
 @SpringBootApplication
 public class LabJpaApplication implements CommandLineRunner {
@@ -16,10 +17,18 @@ public class LabJpaApplication implements CommandLineRunner {
 	
 	@Autowired
 	private PointService pointService;
+	
+	@Autowired
+	private TabuleiroService tabuleiroService;
 
 	@Override
 	public void run(String... args) throws Exception {
 		pointService.inserirDez();
+		//pointService.consultas();
+		
+		//tabuleiroService.buscarPontos();
+		
+		tabuleiroService.buscarPontosWhite();
 		
 	}
 

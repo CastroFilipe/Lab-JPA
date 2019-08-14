@@ -22,6 +22,10 @@ public class PointService {
 	@Transactional
 	public void inserirDez() {
 		pointRepo.inserirPontos();
+		
+	}
+	
+	public void consultas() {
 		pointRepo.contar();
 		pointRepo.calcularMedia();
 		System.out.println(pointRepo.buscarTodos());
@@ -29,8 +33,6 @@ public class PointService {
 		Point p = pointRepo.buscarPorId(5);
 		
 		System.out.println(p);
-		
-		
 		
 		Tabuleiro tab = p.getTabuleiro();
 		

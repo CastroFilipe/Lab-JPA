@@ -2,6 +2,7 @@ package com.filipe.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +21,7 @@ public class Endereco implements Serializable {
 	private Long id;
 	
 	@Column(name = "\"TX_LOGRADOURO\"")
+	@Basic
 	private String txLogradouro;
 	
 	@OneToOne

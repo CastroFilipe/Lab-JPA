@@ -2,6 +2,7 @@ package com.filipe.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -23,9 +24,11 @@ public class Funcionario implements Serializable {
 	private Long id;
 
 	@Column(name = "\"TX_NOME\"")
+	@Basic
 	private String txNome;
 	
 	@Enumerated(EnumType.STRING)
+	@Basic
 	@Column(name = "EN_TIPO_FUNCIONARIO")
 	private TipoFuncionario tipoFuncionario;
 	

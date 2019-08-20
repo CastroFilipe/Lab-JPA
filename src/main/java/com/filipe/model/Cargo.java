@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator(name="SEQ_CARGO", sequenceName="SQ_DEPARTAMENTO",initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name="SEQ_CARGO", sequenceName="SQ_CARGO",initialValue = 1, allocationSize = 1)
 public class Cargo implements Serializable {
 	private static final long serialVersionUID = 1L;
 

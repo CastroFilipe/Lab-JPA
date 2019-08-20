@@ -13,17 +13,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity
+@SequenceGenerator(name="SEQ_FUNCIONARIO", sequenceName="SQ_FUNCIONARIO",initialValue = 1, allocationSize = 1)
 public class Funcionario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "\"ID_FUNCIONARIO\"")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_FUNCIONARIO")
+	//@Column(name = "\"ID_FUNCIONARIO\"")
 	private Long id;
 
-	@Column(name = "\"TX_NOME\"")
+	//@Column(name = "\"TX_NOME\"")
 	@Basic
 	private String txNome;
 	
@@ -42,12 +44,11 @@ public class Funcionario implements Serializable {
 	public Funcionario() {
 	}
 
-	public Funcionario(Long id, String txNome, TipoFuncionario tipoFuncionario, Endereco endereco, Cargo cargo) {
+	public Funcionario(Long id, String txNome, TipoFuncionario tipoFuncionario, Cargo cargo) {
 		super();
 		this.id = id;
 		this.txNome = txNome;
 		this.tipoFuncionario = tipoFuncionario;
-		this.endereco = endereco;
 		this.cargo = cargo;
 	}
 

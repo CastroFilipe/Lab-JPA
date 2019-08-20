@@ -1,6 +1,7 @@
 package com.filipe;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -68,6 +69,21 @@ public class LabJpaApplication implements CommandLineRunner {
 		
 		Departamento departamento = departamentoService.buscar(1L);
 		System.out.println(departamento);
+		List<Cargo> cargos = departamento.getCargos();
+		
+		System.out.println(cargos);
+		
+		System.out.println("Buscando Todos os departamentos....");
+		List<Departamento> departamentos = departamentoService.buscarTodos();
+		System.out.println(departamentos);
+		
+		//System.out.println(departamentos.get(0).getCargos()); //LAZY EXCEPTION
+		
+		System.out.println("Contando o Total de departamentos: ");
+		System.out.println(departamentoService.contar());
+		
+		System.out.println("Buscando Departamento TI pelo nome...");
+		System.out.println(departamentoService.buscarPorNome("TI"));
 		
 //		departamento.setTxNome("TI");
 //		departamento = departamentoService.editar(departamento);

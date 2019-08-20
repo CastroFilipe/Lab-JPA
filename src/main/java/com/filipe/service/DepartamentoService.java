@@ -1,5 +1,7 @@
 package com.filipe.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +27,17 @@ public class DepartamentoService {
 			throw new IllegalArgumentException("Id nao pode ser nulo");
 		
 		return departamentoRepository.editar(departamento);
+	}
+	
+	public List<Departamento> buscarTodos(){
+		return departamentoRepository.buscarTodos();
+	}
+	
+	public Long contar() {
+		return departamentoRepository.contar();
+	}
+	
+	public Departamento buscarPorNome(String nome) {
+		return departamentoRepository.buscarPorNome(nome);
 	}
 }

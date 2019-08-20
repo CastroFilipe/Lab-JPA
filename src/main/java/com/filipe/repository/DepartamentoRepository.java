@@ -1,9 +1,14 @@
 package com.filipe.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.TypedQuery;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.filipe.model.Departamento;
@@ -11,9 +16,12 @@ import com.filipe.model.Departamento;
 @Repository
 public class DepartamentoRepository {
 
-	@Autowired
+	@PersistenceUnit
 	private EntityManagerFactory emf;
-	
+
+	@PersistenceContext
+	EntityManager em;
+
 	public Departamento inserir(Departamento departamento) {
 
 		EntityManager em = emf.createEntityManager();
@@ -30,15 +38,15 @@ public class DepartamentoRepository {
 
 		return departamento;
 	}
-	
+
 	public Departamento buscar(Class<Departamento> entityClass, Long id) {
 		EntityManager em = emf.createEntityManager();
-		
+
 		return em.find(entityClass, id);
 	}
-	
+
 	public Departamento editar(Departamento departamento) {
-		
+
 		EntityManager em = emf.createEntityManager();
 
 		try {
@@ -54,4 +62,38 @@ public class DepartamentoRepository {
 		return departamento;
 	}
 
+	public List<Departamento> buscarTodos() {
+		TypedQuery<Departamento> query = em.createQuery("SELECT d FROM Departamento d", Departamento.class);
+
+		return query.getResultList();
+	}
+
+	// conta o número de registro em Departamento
+	public Long contar() {
+		TypedQuery<Long> query = em.createQuery("SELECT COUNT(d) FROM Departamento d", Long.class);
+
+		Long quantidade = query.getSingleResult();
+
+		return quantidade;
+	}
+
+	public Departamento buscarPorNome(String nome) {
+
+		Departamento departamento;
+
+		try {
+			TypedQuery<Departamento> query = em
+					.createQuery("SELECT d FROM Departamento d WHERE d.txNome = :nome", Departamento.class)
+					.setParameter("nome", nome);
+
+			departamento = query.getSingleResult();
+
+		} catch (NoResultException e) {
+			System.out.println(nome + "não encontrado");
+			return null;
+		}
+
+		return departamento;
+
+	}
 }

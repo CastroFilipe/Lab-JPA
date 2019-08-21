@@ -16,6 +16,7 @@ import com.filipe.model.TipoFuncionario;
 import com.filipe.repository.CargoRepository;
 import com.filipe.repository.EnderecoRepository;
 import com.filipe.repository.FuncionarioRepository;
+import com.filipe.service.CargoService;
 import com.filipe.service.DepartamentoService;
 
 @SpringBootApplication
@@ -27,6 +28,9 @@ public class LabJpaApplication implements CommandLineRunner {
 	
 	@Autowired
 	private DepartamentoService departamentoService;
+	
+	@Autowired
+	private CargoService cargoService;
 	
 	@Autowired
 	private CargoRepository cargoRepository;
@@ -88,7 +92,17 @@ public class LabJpaApplication implements CommandLineRunner {
 		System.out.println("Buscando nome por id....");
 		System.out.println(departamentoService.buscarNomePorId(2L));
 		
-
+		System.out.println("Buscando nome do cargo com id = 1....");
+		System.out.println(cargoService.buscarNomeCargo(1L));
+		
+		System.out.println("Buscando nome do cargo e do departamento onde Cargo id = 1....");
+		List<Object[]> nomes = cargoService.buscarNomeCargoEdepartamento(1L);
+		for(Object[] nome : nomes) {
+			System.out.println("cargo: "+ nome[0] + "| departamento: "+ nome[1]);
+		}
+		
+		
+		
 //		departamento.setTxNome("TI");
 //		departamento = departamentoService.editar(departamento);
 //		System.out.println(departamento);

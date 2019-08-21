@@ -11,7 +11,6 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
-import com.filipe.model.Cargo;
 import com.filipe.model.Departamento;
 
 @Repository

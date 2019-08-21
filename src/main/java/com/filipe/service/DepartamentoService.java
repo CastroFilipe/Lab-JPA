@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.filipe.model.Cargo;
 import com.filipe.model.Departamento;
 import com.filipe.repository.DepartamentoRepository;
 
@@ -40,4 +41,9 @@ public class DepartamentoService {
 	public Departamento buscarPorNome(String nome) {
 		return departamentoRepository.buscarPorNome(nome);
 	}
+	
+	public String buscarNomePorId(Long id) {
+		return departamentoRepository.buscarNomePorId(id);
+	}
+
 }

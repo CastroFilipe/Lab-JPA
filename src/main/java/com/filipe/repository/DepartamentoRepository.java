@@ -11,6 +11,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
+import com.filipe.model.Cargo;
 import com.filipe.model.Departamento;
 
 @Repository
@@ -94,6 +95,14 @@ public class DepartamentoRepository {
 		}
 
 		return departamento;
-
+	}
+	
+	//retorna o nome de um Departamento
+	public String buscarNomePorId(Long id) {
+		TypedQuery<String> query = em.createQuery(
+			      "SELECT d.txNome FROM Departamento AS d WHERE d.id = :id ", String.class)
+				.setParameter("id", id);
+		
+			return query.getSingleResult();
 	}
 }

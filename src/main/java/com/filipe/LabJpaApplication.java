@@ -85,6 +85,10 @@ public class LabJpaApplication implements CommandLineRunner {
 		System.out.println("Buscando Departamento TI pelo nome...");
 		System.out.println(departamentoService.buscarPorNome("TI"));
 		
+		System.out.println("Buscando nome por id....");
+		System.out.println(departamentoService.buscarNomePorId(2L));
+		
+
 //		departamento.setTxNome("TI");
 //		departamento = departamentoService.editar(departamento);
 //		System.out.println(departamento);

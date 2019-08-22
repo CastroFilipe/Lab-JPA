@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.filipe.model.Funcionario;
 import com.filipe.repository.FuncionarioRepository;
 
 @Service
@@ -23,5 +24,9 @@ public class FuncionarioService {
 	
 	public List<String> buscarFuncionariosNosCargos(List<String> listaDeCargos){
 		return funcionarioRepository.buscarFuncionariosNosCargos(listaDeCargos);
+	}
+
+	public List<Funcionario> buscarFuncionariosOrdenadosPorSalario(){
+		return funcionarioRepository.buscarFuncionariosOrdenadosPorSalario();
 	}
 }

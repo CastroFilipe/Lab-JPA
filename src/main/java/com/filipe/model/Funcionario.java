@@ -140,10 +140,6 @@ public class Funcionario implements Serializable {
 		builder.append(salario);
 		builder.append(", tipoFuncionario=");
 		builder.append(tipoFuncionario);
-		builder.append(", endereco=");
-		builder.append(endereco);
-		builder.append(", cargo=");
-		builder.append(cargo);
 		builder.append("]");
 		return builder.toString();
 	}

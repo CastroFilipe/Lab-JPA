@@ -20,4 +20,7 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> 
 	
 	@Query("SELECT DISTINCT f.txNome FROM Funcionario AS f WHERE f.cargo.txNome IN (:listaDeCargos)")
 	public List<String> buscarFuncionariosNosCargos(@Param("listaDeCargos") List<String> listaDeCargos);
+	
+	@Query("SELECT DISTINCT f FROM Funcionario AS f WHERE f.salario >= 1700.0 ORDER BY f.salario")
+	public List<Funcionario> buscarFuncionariosOrdenadosPorSalario();
 }

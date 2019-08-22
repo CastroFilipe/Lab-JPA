@@ -120,10 +120,8 @@ public class LabJpaApplication implements CommandLineRunner {
 		System.out.println("Buscando nome de Funcionarios pertencentes aos cargos contidos na lista ....");
 		System.out.println(funcionarioService.buscarFuncionariosNosCargos(Arrays.asList("Técnico em Informática", "Programador")));
 		
-//		departamento.setTxNome("TI");
-//		departamento = departamentoService.editar(departamento);
-//		System.out.println(departamento);
-		
+		System.out.println("Buscando Funcionarios com Salario maior que 1600.0 e ordenados pelo salario");
+		System.out.println(funcionarioService.buscarFuncionariosOrdenadosPorSalario());		
 		
 	}
 

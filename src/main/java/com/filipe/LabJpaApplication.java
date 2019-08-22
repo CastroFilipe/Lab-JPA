@@ -18,6 +18,7 @@ import com.filipe.repository.EnderecoRepository;
 import com.filipe.repository.FuncionarioRepository;
 import com.filipe.service.CargoService;
 import com.filipe.service.DepartamentoService;
+import com.filipe.service.FuncionarioService;
 
 @SpringBootApplication
 public class LabJpaApplication implements CommandLineRunner {
@@ -31,6 +32,9 @@ public class LabJpaApplication implements CommandLineRunner {
 	
 	@Autowired
 	private CargoService cargoService;
+	
+	@Autowired
+	private FuncionarioService funcionarioService;
 	
 	@Autowired
 	private CargoRepository cargoRepository;
@@ -58,8 +62,8 @@ public class LabJpaApplication implements CommandLineRunner {
 		
 		Funcionario f1 = new Funcionario(null, "Filipe Castro", 2000.0,TipoFuncionario.PERIODO_INTEGRAL, c2);
 		Funcionario f2 = new Funcionario(null, "Franklin", 2100.0, TipoFuncionario.PERIODO_INTEGRAL, c2);
-		Funcionario f3 = new Funcionario(null, "Abelardo Santos",1700.0, TipoFuncionario.MEIO_PERIODO, c3);
-		Funcionario f4 = new Funcionario(null, "Lucas Davi", 2300.0, TipoFuncionario.PERIODO_INTEGRAL, c2);
+		Funcionario f3 = new Funcionario(null, "Reinaldo Santos",1700.0, TipoFuncionario.MEIO_PERIODO, c3);
+		Funcionario f4 = new Funcionario(null, "Lucas Davi", 2300.0, TipoFuncionario.PERIODO_INTEGRAL, c1);
 		
 		Endereco end1 = new Endereco(null, "São Cristovão", f1);
 		Endereco end2 = new Endereco(null, "Rua A", f2);
@@ -105,10 +109,16 @@ public class LabJpaApplication implements CommandLineRunner {
 		
 		System.out.println("Buscando nomes de cargos com Like...");
 		List<String> listaCargos = cargoService.buscarCargoLike("o");
-		for(String nome : listaCargos) {
-			System.out.println(nome);
-		}
+		System.out.println(listaCargos);
 
+		System.out.println("Buscando nome de Funcionarios com salario entre 1600 e 2200");
+		System.out.println(funcionarioService.buscarFuncionariosSalarioEntre(1600.00, 2200.00));
+		
+		System.out.println("Buscando nome de Funcionarios com salarios NOT BETWEEN 1600 e 2200");
+		System.out.println(funcionarioService.buscarFuncionarioNotSalarioEntre(1600.00, 2200.00));
+		
+		System.out.println("Buscando nome de Funcionarios pertencentes aos cargos contidos na lista ....");
+		System.out.println(funcionarioService.buscarFuncionariosNosCargos(Arrays.asList("Técnico em Informática", "Programador")));
 		
 //		departamento.setTxNome("TI");
 //		departamento = departamentoService.editar(departamento);

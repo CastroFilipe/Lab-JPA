@@ -54,6 +54,8 @@ public class LabJpaApplication implements CommandLineRunner {
 		
 		Cargo c3 = new Cargo(null, "Contador", dp1);
 		
+		Cargo c4 = new Cargo(null, "Tesoureiro", dp1);
+		
 		Funcionario f1 = new Funcionario(null, "Filipe Castro", TipoFuncionario.PERIODO_INTEGRAL, c2);
 		Funcionario f2 = new Funcionario(null, "Franklin", TipoFuncionario.PERIODO_INTEGRAL, c2);
 		Funcionario f3 = new Funcionario(null, "Abelardo Santos", TipoFuncionario.MEIO_PERIODO, c3);
@@ -66,7 +68,7 @@ public class LabJpaApplication implements CommandLineRunner {
 		
 		departamentoService.inserir(dp1);
 		departamentoService.inserir(dp2);
-		cargoRepository.saveAll(Arrays.asList(c1,c2,c3));
+		cargoRepository.saveAll(Arrays.asList(c1,c2,c3,c4));
 		funcionarioRepository.saveAll(Arrays.asList(f1,f2,f3,f4));
 		enderecoRepository.saveAll(Arrays.asList(end1,end2,end3, end4));
 		
@@ -101,7 +103,12 @@ public class LabJpaApplication implements CommandLineRunner {
 			System.out.println("cargo: "+ nome[0] + "| departamento: "+ nome[1]);
 		}
 		
-		
+		System.out.println("Buscando nomes de cargos com Like...");
+		List<String> listaCargos = cargoService.buscarCargoLike("o");
+		for(String nome : listaCargos) {
+			System.out.println(nome);
+		}
+
 		
 //		departamento.setTxNome("TI");
 //		departamento = departamentoService.editar(departamento);

@@ -23,4 +23,9 @@ public class CargoService {
 	public List<Object[]> buscarNomeCargoEdepartamento(Long id){
 		return cargoRepository.buscarNomeCargoEdepartamento(id);
 	}
+	
+	@Transactional(readOnly=true)
+	public List<String> buscarCargoLike(String nome){
+		return cargoRepository.buscarCargoLike(nome);
+	}
 }

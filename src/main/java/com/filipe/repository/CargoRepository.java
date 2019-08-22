@@ -15,4 +15,7 @@ public interface CargoRepository extends JpaRepository<Cargo, Long> {
 	
 	@Query("SELECT DISTINCT c.txNome, c.departamento.txNome FROM Cargo AS c WHERE c.id = :id")
 	public List<Object[]> buscarNomeCargoEdepartamento(@Param("id") Long id);
+	
+	@Query("SELECT c.txNome FROM Cargo AS c WHERE c.txNome LIKE %:nome%")
+	public List<String> buscarCargoLike(@Param("nome") String nome);
 }

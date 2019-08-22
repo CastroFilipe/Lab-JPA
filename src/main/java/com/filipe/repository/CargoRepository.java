@@ -10,6 +10,7 @@ import com.filipe.model.Cargo;
 
 public interface CargoRepository extends JpaRepository<Cargo, Long> {
 
+	//Cláusula As opcional.
 	@Query("SELECT DISTINCT c.txNome FROM Cargo AS c WHERE c.id = :id")
 	public String buscarNomeCargo(@Param("id") Long id);
 	

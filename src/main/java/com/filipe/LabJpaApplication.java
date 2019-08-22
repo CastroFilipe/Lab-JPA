@@ -56,10 +56,10 @@ public class LabJpaApplication implements CommandLineRunner {
 		
 		Cargo c4 = new Cargo(null, "Tesoureiro", dp1);
 		
-		Funcionario f1 = new Funcionario(null, "Filipe Castro", TipoFuncionario.PERIODO_INTEGRAL, c2);
-		Funcionario f2 = new Funcionario(null, "Franklin", TipoFuncionario.PERIODO_INTEGRAL, c2);
-		Funcionario f3 = new Funcionario(null, "Abelardo Santos", TipoFuncionario.MEIO_PERIODO, c3);
-		Funcionario f4 = new Funcionario(null, "Lucas Davi", TipoFuncionario.PERIODO_INTEGRAL, c2);
+		Funcionario f1 = new Funcionario(null, "Filipe Castro", 2000.0,TipoFuncionario.PERIODO_INTEGRAL, c2);
+		Funcionario f2 = new Funcionario(null, "Franklin", 2100.0, TipoFuncionario.PERIODO_INTEGRAL, c2);
+		Funcionario f3 = new Funcionario(null, "Abelardo Santos",1700.0, TipoFuncionario.MEIO_PERIODO, c3);
+		Funcionario f4 = new Funcionario(null, "Lucas Davi", 2300.0, TipoFuncionario.PERIODO_INTEGRAL, c2);
 		
 		Endereco end1 = new Endereco(null, "São Cristovão", f1);
 		Endereco end2 = new Endereco(null, "Rua A", f2);

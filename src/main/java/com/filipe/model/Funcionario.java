@@ -29,6 +29,9 @@ public class Funcionario implements Serializable {
 	@Basic
 	private String txNome;
 	
+	@Basic
+	private Double salario;
+	
 	@Enumerated(EnumType.STRING)
 	@Basic
 	@Column(name = "EN_TIPO_FUNCIONARIO")
@@ -44,10 +47,11 @@ public class Funcionario implements Serializable {
 	public Funcionario() {
 	}
 
-	public Funcionario(Long id, String txNome, TipoFuncionario tipoFuncionario, Cargo cargo) {
+	public Funcionario(Long id, String txNome, Double salario, TipoFuncionario tipoFuncionario, Cargo cargo) {
 		super();
 		this.id = id;
 		this.txNome = txNome;
+		this.salario = salario;
 		this.tipoFuncionario = tipoFuncionario;
 		this.cargo = cargo;
 	}
@@ -66,6 +70,14 @@ public class Funcionario implements Serializable {
 
 	public void setTxNome(String txNome) {
 		this.txNome = txNome;
+	}
+	
+	public Double getSalario() {
+		return salario;
+	}
+
+	public void setSalario(Double salario) {
+		this.salario = salario;
 	}
 
 	public TipoFuncionario getTipoFuncionario() {
@@ -124,6 +136,8 @@ public class Funcionario implements Serializable {
 		builder.append(id);
 		builder.append(", txNome=");
 		builder.append(txNome);
+		builder.append(", salario=");
+		builder.append(salario);
 		builder.append(", tipoFuncionario=");
 		builder.append(tipoFuncionario);
 		builder.append(", endereco=");

@@ -29,4 +29,8 @@ public class FuncionarioService {
 	public List<Funcionario> buscarFuncionariosOrdenadosPorSalario(){
 		return funcionarioRepository.buscarFuncionariosOrdenadosPorSalario();
 	}
+	
+	public List<Object[]> buscarInformacoesComJoin(){
+		return funcionarioRepository.buscarInformacoesComJoin();
+	}
 }

@@ -23,4 +23,7 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> 
 	
 	@Query("SELECT DISTINCT f FROM Funcionario AS f WHERE f.salario >= 1700.0 ORDER BY f.salario")
 	public List<Funcionario> buscarFuncionariosOrdenadosPorSalario();
+	
+	@Query("SELECT f.txNome, c.txNome FROM Funcionario f INNER JOIN f.cargo c")
+	public List<Object[]> buscarInformacoesComJoin();
 }

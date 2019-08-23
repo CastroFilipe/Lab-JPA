@@ -26,4 +26,7 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> 
 	
 	@Query("SELECT f.txNome, c.txNome FROM Funcionario f INNER JOIN f.cargo c")
 	public List<Object[]> buscarInformacoesComJoin();
+	
+	@Query("SELECT f.txNome, c.txNome, d.txNome FROM Funcionario f INNER JOIN f.cargo c JOIN c.departamento d")
+	public List<Object[]> buscarInformacoesComJoin2();
 }

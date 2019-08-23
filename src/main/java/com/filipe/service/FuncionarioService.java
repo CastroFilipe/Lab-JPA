@@ -33,4 +33,8 @@ public class FuncionarioService {
 	public List<Object[]> buscarInformacoesComJoin(){
 		return funcionarioRepository.buscarInformacoesComJoin();
 	}
+	
+	public List<Object[]> buscarInformacoesComJoin2(){
+		return funcionarioRepository.buscarInformacoesComJoin2();
+	}
 }

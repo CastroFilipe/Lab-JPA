@@ -138,6 +138,20 @@ public class LabJpaApplication implements CommandLineRunner {
 			}
 		}
 		
+		System.out.println("Buscando informações do funcionario,cargo,departamento com INNER JOIN");
+		List<Object[]> infoFuncionarios2 = funcionarioService.buscarInformacoesComJoin2();
+		for(Object[] info : infoFuncionarios2) {
+			
+			int tam = info.length;
+			
+			for(int i = 0; i < tam; i++) {
+				System.out.print(" "+ info[i]);
+				
+				if(i == (tam-1)) {
+					System.out.println();
+				}
+			}
+		}
 	}
 
 }

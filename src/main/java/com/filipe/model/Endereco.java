@@ -3,6 +3,7 @@ package com.filipe.model;
 import java.io.Serializable;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,15 +19,14 @@ public class Endereco implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ENDERECO")
-	//@Column(name = "\"ID_ENDERECO\"")
 	private Long id;
 	
-	//@Column(name = "\"TX_LOGRADOURO\"")
 	@Basic
+	@Column(nullable = false)
 	private String txLogradouro;
 	
 	@OneToOne
-	@JoinColumn(name = "\"ID_FUNCIONARIO\"")
+	@JoinColumn(name = "\"ID_FUNCIONARIO\"", nullable = false)
 	private Funcionario funcionario;
 	
 	public Endereco() {

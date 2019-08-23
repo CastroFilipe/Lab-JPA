@@ -22,26 +22,26 @@ public class Funcionario implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_FUNCIONARIO")
-	//@Column(name = "\"ID_FUNCIONARIO\"")
 	private Long id;
 
-	//@Column(name = "\"TX_NOME\"")
 	@Basic
+	@Column(nullable = false)
 	private String txNome;
 	
 	@Basic
+	@Column(nullable = false)
 	private Double salario;
 	
 	@Enumerated(EnumType.STRING)
 	@Basic
-	@Column(name = "EN_TIPO_FUNCIONARIO")
+	@Column(name = "EN_TIPO_FUNCIONARIO", nullable = false)
 	private TipoFuncionario tipoFuncionario;
 	
 	@OneToOne(mappedBy = "funcionario")
 	private Endereco endereco;
 	
 	@ManyToOne
-	@JoinColumn(name = "\"ID_CARGO\"")
+	@JoinColumn(name = "\"ID_CARGO\"", nullable = false)
 	private Cargo cargo;
 	
 	public Funcionario() {

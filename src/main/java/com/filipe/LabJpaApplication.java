@@ -12,6 +12,7 @@ import com.filipe.model.Cargo;
 import com.filipe.model.Departamento;
 import com.filipe.model.Endereco;
 import com.filipe.model.Funcionario;
+import com.filipe.model.InfoFuncionarioDTO;
 import com.filipe.model.TipoFuncionario;
 import com.filipe.repository.CargoRepository;
 import com.filipe.repository.EnderecoRepository;
@@ -152,6 +153,11 @@ public class LabJpaApplication implements CommandLineRunner {
 				}
 			}
 		}
+		
+		System.out.println("Buscando informações dos funcionarios via DTO");
+		List<InfoFuncionarioDTO> infoFuncionariosDTOs = funcionarioService.buscarListaDeInformacoes();
+		System.out.println(infoFuncionariosDTOs);
+		
 	}
 
 }

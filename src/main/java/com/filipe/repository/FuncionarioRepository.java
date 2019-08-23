@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.filipe.model.Funcionario;
+import com.filipe.model.InfoFuncionarioDTO;
 
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
 	
@@ -29,4 +30,8 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> 
 	
 	@Query("SELECT f.txNome, c.txNome, d.txNome FROM Funcionario f INNER JOIN f.cargo c JOIN c.departamento d")
 	public List<Object[]> buscarInformacoesComJoin2();
+	
+	@Query("SELECT NEW com.filipe.model.InfoFuncionarioDTO(f.txNome, c.txNome, d.txNome, f.salario, e.txLogradouro) "
+			+ "FROM Funcionario f JOIN f.cargo c Join c.departamento d JOIN f.endereco e")
+	public List<InfoFuncionarioDTO> buscarListaDeInformacoes();
 }

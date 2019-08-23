@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.filipe.model.Funcionario;
+import com.filipe.model.InfoFuncionarioDTO;
 import com.filipe.repository.FuncionarioRepository;
 
 @Service
@@ -36,5 +37,9 @@ public class FuncionarioService {
 	
 	public List<Object[]> buscarInformacoesComJoin2(){
 		return funcionarioRepository.buscarInformacoesComJoin2();
+	}
+	
+	public List<InfoFuncionarioDTO> buscarListaDeInformacoes(){
+		return funcionarioRepository.buscarListaDeInformacoes();
 	}
 }

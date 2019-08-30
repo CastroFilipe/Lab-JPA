@@ -158,6 +158,8 @@ public class LabJpaApplication implements CommandLineRunner {
 		List<InfoFuncionarioDTO> infoFuncionariosDTOs = funcionarioService.buscarListaDeInformacoes();
 		System.out.println(infoFuncionariosDTOs);
 		
+		System.out.println("Busca de Cargos por paginação....");
+		System.out.println(cargoService.findPage(0, 2));
 	}
 
 }

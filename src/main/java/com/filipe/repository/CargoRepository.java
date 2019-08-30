@@ -2,6 +2,8 @@ package com.filipe.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,4 +21,7 @@ public interface CargoRepository extends JpaRepository<Cargo, Long> {
 	
 	@Query("SELECT c.txNome FROM Cargo AS c WHERE c.txNome LIKE %:nome%")
 	public List<String> buscarCargoLike(@Param("nome") String nome);
+	
+	@Query("SELECT DISTINCT c FROM Cargo c")
+	Page<Cargo> findPage(PageRequest pageRequest);
 }
